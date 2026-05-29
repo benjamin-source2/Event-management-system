@@ -29,7 +29,7 @@
     <!-- Charts & Recent Activity Row -->
     <div class="grid lg:grid-cols-2 gap-8 mb-8">
         <!-- Daily Activity Chart -->
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Daily Activity (30 Days)</h2>
             <div class="space-y-3">
                 @php
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Top Events -->
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Top Events by Attendance</h2>
             @if($topEvents->count() > 0)
                 <div class="space-y-4">
@@ -102,7 +102,7 @@
 
     <!-- Recent Data -->
     <div class="grid lg:grid-cols-2 gap-8">
-        <div class="premium-card">
+        <div class="glass-heavy">
             <div class="p-6 border-b border-gray-200 dark:border-navy-700">
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white">Recent Users</h2>
             </div>
@@ -126,7 +126,7 @@
             </div>
         </div>
 
-        <div class="premium-card">
+        <div class="glass-heavy">
             <div class="p-6 border-b border-gray-200 dark:border-navy-700">
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white">Recent Events</h2>
             </div>

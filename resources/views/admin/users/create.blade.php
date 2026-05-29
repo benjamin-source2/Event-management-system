@@ -10,7 +10,7 @@
     <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-6">
         @csrf
 
-        <div class="premium-card p-6 space-y-6">
+        <div class="glass-heavy p-6 space-y-6">
             <div class="grid sm:grid-cols-2 gap-6">
                 <div class="input-group">
                     <label class="input-label">Username</label>

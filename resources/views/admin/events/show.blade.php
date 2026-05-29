@@ -34,12 +34,12 @@
 
     <div class="grid lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 space-y-6">
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Description</h3>
                 <p class="text-gray-600 dark:text-gray-400">{{ $event->description }}</p>
             </div>
 
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Invitations ({{ $event->invitations->count() }})</h3>
                 @if($event->invitations->count() > 0)
                     <div class="space-y-3">
@@ -63,7 +63,7 @@
         </div>
 
         <div class="space-y-6">
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Event Details</h3>
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">Status</span><span class="badge-{{ $event->status === 'approved' ? 'success' : 'warning' }}">{{ $event->status_name }}</span></div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Organizer</h3>
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold">{{ $event->organizer->initials }}</div>

@@ -12,7 +12,7 @@
         @csrf
         @method('PUT')
 
-        <div class="premium-card p-6">
+        <div class="glass-card p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Profile Information</h2>
 
             <div class="grid sm:grid-cols-2 gap-6">
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Preferences -->
-        <div class="premium-card p-6">
+        <div class="glass-card p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Preferences</h2>
 
             <div class="grid sm:grid-cols-2 gap-6">
@@ -76,7 +76,7 @@
 
     <!-- Account Security -->
     <div class="mt-8">
-        <div class="premium-card p-6">
+        <div class="glass-card p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Account Security</h2>
             <div class="flex items-center justify-between py-3 border-b border-gray-200 dark:border-navy-700">
                 <div>

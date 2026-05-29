@@ -33,7 +33,7 @@
     @if($invitations->count() > 0)
         <div class="space-y-4">
             @foreach($invitations as $invitation)
-                <div class="premium-card p-5 flex items-center justify-between">
+                <div class="glass-card p-5 flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500/10 to-accent-500/10 flex items-center justify-center">
                             <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

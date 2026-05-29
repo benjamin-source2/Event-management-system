@@ -17,7 +17,7 @@
     </div>
 
     @if($notifications->count() > 0)
-        <div class="premium-card overflow-hidden">
+        <div class="glass-card overflow-hidden">
             <div class="divide-y divide-gray-100 dark:divide-navy-700">
                 @foreach($notifications as $notification)
                     <div class="p-4 flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-navy-800/50 transition-colors {{ !$notification->is_read ? 'bg-primary-50/50 dark:bg-primary-900/10' : '' }}">

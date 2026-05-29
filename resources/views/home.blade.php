@@ -127,7 +127,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     @foreach(\App\Models\Event::CATEGORIES as $key => $category)
                         <a href="{{ route('events.index', ['category' => $key]) }}"
-                           class="group premium-card-hover p-6 text-center">
+                           class="group glass-card-hover p-6 text-center">
                             <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-500/10 to-accent-500/10 flex items-center justify-center group-hover:from-primary-500/20 group-hover:to-accent-500/20 transition-all duration-300">
                                 @switch($key)
                                     @case('wedding')

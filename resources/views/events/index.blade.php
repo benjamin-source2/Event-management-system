@@ -8,8 +8,8 @@
         <p class="text-gray-500 dark:text-gray-400">Find the perfect event to attend across Rwanda</p>
     </div>
 
-    <!-- Filters -->
-    <div class="premium-card p-6 mb-8">
+    <!-- Filters - Glass -->
+    <div class="glass-heavy rounded-2xl p-6 mb-8">
         <form method="GET" action="{{ route('events.index') }}" class="grid md:grid-cols-4 gap-4">
             <div class="input-group">
                 <label class="input-label">Search</label>
@@ -61,7 +61,7 @@
             Showing {{ $events->firstItem() ?? 0 }} - {{ $events->lastItem() ?? 0 }} of {{ $events->total() }} events
         </p>
         <div class="flex items-center gap-2">
-            <button class="p-2 rounded-xl bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-navy-700 transition-colors">
+            <button class="p-2 rounded-xl glass text-gray-600 dark:text-gray-400 hover:bg-white/20 transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
                 </svg>

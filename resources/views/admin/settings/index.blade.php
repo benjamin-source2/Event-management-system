@@ -7,7 +7,7 @@
         <p class="text-gray-500 dark:text-gray-400">Configure platform settings</p>
     </div>
 
-    <div class="premium-card p-6">
+    <div class="glass-heavy p-6">
         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">General Settings</h2>
         <form action="{{ route('admin.settings.update') }}" method="POST">
             @csrf

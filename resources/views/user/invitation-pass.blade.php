@@ -8,7 +8,7 @@
     </div>
 
     <!-- Digital Pass Card -->
-    <div class="premium-card overflow-hidden animate-scale-in">
+    <div class="glass-card overflow-hidden animate-scale-in">
         <!-- Pass Header -->
         <div class="bg-gradient-to-r from-primary-500 via-accent-500 to-rose-500 p-8 text-white text-center relative overflow-hidden">
             <div class="absolute inset-0 opacity-10">
@@ -94,7 +94,7 @@
 <style media="print">
     @page { margin: 0; }
     body * { visibility: hidden; }
-    .premium-card, .premium-card * { visibility: visible; }
-    .premium-card { position: absolute; left: 0; top: 0; width: 100%; }
+    .glass-card, .glass-card * { visibility: visible; }
+    .glass-card { position: absolute; left: 0; top: 0; width: 100%; }
 </style>
 @endpush

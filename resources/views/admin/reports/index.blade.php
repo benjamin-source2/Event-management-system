@@ -9,7 +9,7 @@
 
     <!-- User Stats -->
     <div class="grid lg:grid-cols-2 gap-8 mb-8">
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Users by Role</h2>
             <div class="space-y-4">
                 @foreach($userStats['by_role'] as $role => $count)
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Users by Status</h2>
             <div class="space-y-4">
                 @foreach($userStats['by_status'] as $status => $count)
@@ -56,7 +56,7 @@
 
     <!-- Event Stats -->
     <div class="grid lg:grid-cols-2 gap-8 mb-8">
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Events by Category</h2>
             <div class="space-y-4">
                 @forelse($eventStats['by_category'] as $category => $count)
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Events by Province</h2>
             <div class="space-y-4">
                 @forelse($eventStats['by_province'] as $province => $count)
@@ -105,7 +105,7 @@
 
     <!-- Top Events & Export -->
     <div class="grid lg:grid-cols-2 gap-8 mb-8">
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Top Events</h2>
             @if($topEvents->count() > 0)
                 <div class="space-y-4">
@@ -124,7 +124,7 @@
             @endif
         </div>
 
-        <div class="premium-card p-6">
+        <div class="glass-heavy p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Export Reports</h2>
             <div class="space-y-4">
                 <a href="{{ route('admin.reports.users.pdf') }}" class="btn-secondary w-full justify-start">
@@ -140,7 +140,7 @@
     </div>
 
     <!-- Daily Activity Chart -->
-    <div class="premium-card p-6">
+    <div class="glass-heavy p-6">
         <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Daily Activity (30 Days)</h2>
         <div class="space-y-6">
             @php $maxEv = max(1, max($dailyActivity['events'])); @endphp

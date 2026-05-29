@@ -10,7 +10,7 @@
     <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
 
-        <div class="premium-card p-6 space-y-6">
+        <div class="glass-heavy p-6 space-y-6">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-navy-700 pb-3">Basic Information</h3>
 
             <div class="input-group">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="premium-card p-6 space-y-6">
+        <div class="glass-heavy p-6 space-y-6">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-navy-700 pb-3">Location</h3>
 
             <div class="grid sm:grid-cols-2 gap-6">
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div class="premium-card p-6 space-y-6">
+        <div class="glass-heavy p-6 space-y-6">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-navy-700 pb-3">Tickets & Status</h3>
 
             <div class="input-group">
@@ -112,7 +112,7 @@
             </div>
         </div>
 
-        <div class="premium-card p-6 space-y-6">
+        <div class="glass-heavy p-6 space-y-6">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-navy-700 pb-3">Event Image</h3>
 
             <div class="input-group">

@@ -24,7 +24,7 @@
 </div>
 
 <!-- Desktop Sidebar -->
-<aside class="fixed inset-y-0 left-0 z-30 hidden lg:flex lg:flex-col w-64 bg-white dark:bg-navy-900 border-r border-gray-200 dark:border-navy-700 shadow-lg">
+<aside class="fixed inset-y-0 left-0 z-30 hidden lg:flex lg:flex-col w-64 glass-sidebar shadow-lg">
     @include('layouts.sidebar-content', ['isDesktop' => true])
 </aside>
 

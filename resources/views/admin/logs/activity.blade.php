@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="premium-card overflow-hidden">
+    <div class="glass-heavy overflow-hidden">
         <div class="divide-y divide-gray-100 dark:divide-navy-700">
             @forelse($notifications as $notification)
                 <div class="p-4 flex items-start gap-3">

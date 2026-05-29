@@ -18,8 +18,8 @@
     @stack('styles')
 </head>
 <body class="font-sans antialiased">
-    <!-- Guest Navigation -->
-    <nav class="absolute top-0 left-0 right-0 z-50">
+    <!-- Guest Navigation - Glass -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
@@ -30,9 +30,9 @@
                 </a>
 
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('events.index') }}" class="text-gray-300 hover:text-white transition-colors font-medium">Events</a>
-                    <a href="{{ route('login') }}" class="text-gray-300 hover:text-white transition-colors font-medium">Login</a>
-                    <a href="{{ route('register') }}" class="px-5 py-2.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-medium transition-all duration-200 border border-white/10">
+                    <a href="{{ route('events.index') }}" class="text-white/80 hover:text-white transition-colors font-medium">Events</a>
+                    <a href="{{ route('login') }}" class="text-white/80 hover:text-white transition-colors font-medium">Login</a>
+                    <a href="{{ route('register') }}" class="glass-btn px-5 py-2.5 text-white font-medium">
                         Sign Up
                     </a>
                 </div>

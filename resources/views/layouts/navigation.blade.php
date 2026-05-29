@@ -4,7 +4,7 @@
     $unreadNotifications = \App\Models\AppNotification::where('user_id', $user->id)->unread()->count();
 @endphp
 
-<nav class="bg-white dark:bg-navy-900 border-b border-gray-200 dark:border-navy-700 shadow-sm sticky top-0 z-20">
+<nav class="glass-nav sticky top-0 z-20">
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <!-- Mobile Hamburger -->

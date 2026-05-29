@@ -31,7 +31,7 @@
 
     <div class="grid lg:grid-cols-2 gap-8">
         <!-- Recent Invitations -->
-        <div class="premium-card">
+        <div class="glass-card">
             <div class="p-6 border-b border-gray-200 dark:border-navy-700">
                 <div class="flex items-center justify-between">
                     <h2 class="text-lg font-bold text-gray-900 dark:text-white">Recent Invitations</h2>
@@ -68,7 +68,7 @@
         </div>
 
         <!-- Recent Notifications -->
-        <div class="premium-card">
+        <div class="glass-card">
             <div class="p-6 border-b border-gray-200 dark:border-navy-700">
                 <div class="flex items-center justify-between">
                     <h2 class="text-lg font-bold text-gray-900 dark:text-white">Notifications</h2>

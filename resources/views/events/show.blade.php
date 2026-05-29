@@ -2,48 +2,55 @@
 
 @section('content')
 <div class="py-8">
-    <!-- Event Header -->
-    <div class="relative rounded-3xl overflow-hidden mb-8 bg-gradient-to-br from-primary-500/10 to-accent-500/10">
+    <!-- Event Header - Full width image hero -->
+    <div class="relative rounded-3xl overflow-hidden mb-8 min-h-[320px] md:min-h-[400px]">
         @if($event->event_image)
-            <div class="absolute inset-0">
-                <img src="{{ Storage::url($event->event_image) }}" alt="{{ $event->title }}"
-                     class="w-full h-full object-cover opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-navy-950 via-transparent"></div>
+            <img src="{{ Storage::url($event->event_image) }}" alt="{{ $event->title }}"
+                 class="absolute inset-0 w-full h-full object-cover">
+        @else
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-accent-600 to-emerald-700">
+                <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
             </div>
         @endif
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
-        <div class="relative p-8 md:p-12">
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="badge-primary">{{ $event->category_name }}</span>
-                @if($event->featured)
-                    <span class="badge-amber">
-                        <svg class="w-3 h-3 inline mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        Featured
-                    </span>
-                @endif
-            </div>
-
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-4">{{ $event->title }}</h1>
-
-            <div class="flex flex-wrap items-center gap-6 text-gray-500 dark:text-gray-400">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <span>{{ $event->event_date->format('l, F d, Y') }}</span>
+        <div class="relative h-full flex items-end p-8 md:p-12">
+            <div class="w-full">
+                <!-- Badges -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="glass-dark text-white text-sm px-4 py-1.5 rounded-lg">{{ $event->category_name }}</span>
+                    @if($event->featured)
+                        <span class="bg-amber-500/80 backdrop-blur-sm text-white text-sm px-4 py-1.5 rounded-lg flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            Featured
+                        </span>
+                    @endif
                 </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span>{{ $event->start_time->format('h:i A') }} - {{ $event->end_time->format('h:i A') }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    <span>{{ $event->location }}, {{ $event->district }}, {{ $event->province_name }}</span>
+
+                <!-- Title -->
+                <h1 class="text-3xl md:text-5xl font-display font-bold text-white mb-4 drop-shadow-lg">{{ $event->title }}</h1>
+
+                <!-- Meta info - Glass -->
+                <div class="inline-flex flex-wrap items-center gap-4 md:gap-6 glass-dark rounded-2xl px-5 py-3 text-sm">
+                    <div class="flex items-center gap-2 text-white/90">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span>{{ $event->event_date->format('l, F d, Y') }}</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/90">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>{{ $event->start_time->format('h:i A') }} - {{ $event->end_time->format('h:i A') }}</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/90">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>{{ $event->location }}, {{ $event->district }}, {{ $event->province_name }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,22 +61,22 @@
         <div class="lg:col-span-2 space-y-8">
             <!-- Countdown -->
             @if($event->event_date > now())
-                <div class="premium-card p-6" x-data="countdown('{{ $event->event_date->format('Y-m-d H:i:s') }}')" x-init="init()">
+                <div class="glass-heavy rounded-2xl p-6" x-data="countdown('{{ $event->event_date->format('Y-m-d H:i:s') }}')" x-init="init()">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Event Countdown</h3>
                     <div class="flex gap-4">
-                        <div class="countdown-item">
+                        <div class="countdown-item glass-heavy rounded-2xl">
                             <span class="countdown-value" x-text="days">00</span>
                             <span class="countdown-label">Days</span>
                         </div>
-                        <div class="countdown-item">
+                        <div class="countdown-item glass-heavy rounded-2xl">
                             <span class="countdown-value" x-text="hours">00</span>
                             <span class="countdown-label">Hours</span>
                         </div>
-                        <div class="countdown-item">
+                        <div class="countdown-item glass-heavy rounded-2xl">
                             <span class="countdown-value" x-text="minutes">00</span>
                             <span class="countdown-label">Minutes</span>
                         </div>
-                        <div class="countdown-item">
+                        <div class="countdown-item glass-heavy rounded-2xl">
                             <span class="countdown-value" x-text="seconds">00</span>
                             <span class="countdown-label">Seconds</span>
                         </div>
@@ -78,7 +85,7 @@
             @endif
 
             <!-- Description -->
-            <div class="premium-card p-6">
+            <div class="glass-heavy rounded-2xl p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">About This Event</h3>
                 <div class="prose prose-gray dark:prose-invert max-w-none">
                     {!! nl2br(e($event->description)) !!}
@@ -86,7 +93,7 @@
             </div>
 
             <!-- Organizer Info -->
-            <div class="premium-card p-6">
+            <div class="glass-heavy rounded-2xl p-6">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Organized By</h3>
                 <div class="flex items-center gap-4">
                     @if($event->organizer->profile_photo)
@@ -107,8 +114,8 @@
 
         <!-- Sidebar -->
         <div class="space-y-6">
-            <!-- Request Invitation Card -->
-            <div class="premium-card p-6 sticky top-20">
+            <!-- Request Invitation Card - Glass -->
+            <div class="glass-heavy rounded-2xl p-6 sticky top-20">
                 <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Join This Event</h3>
 
                 @auth

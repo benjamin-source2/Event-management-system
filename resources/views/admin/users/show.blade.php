@@ -15,7 +15,7 @@
 
     <div class="grid lg:grid-cols-3 gap-8">
         <!-- User Profile -->
-        <div class="premium-card p-6 text-center">
+        <div class="glass-heavy p-6 text-center">
             @if($user->profile_photo)
                 <img src="{{ Storage::url($user->profile_photo) }}" alt="" class="avatar-xl mx-auto mb-4">
             @else
@@ -51,7 +51,7 @@
 
         <!-- User Activity -->
         <div class="lg:col-span-2 space-y-8">
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Invitations ({{ $user->invitations->count() }})</h2>
                 @if($user->invitations->count() > 0)
                     <div class="space-y-3">
@@ -70,7 +70,7 @@
                 @endif
             </div>
 
-            <div class="premium-card p-6">
+            <div class="glass-heavy p-6">
                 <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Login Activity (Last 10)</h2>
                 @if($user->loginLogs->count() > 0)
                     <div class="space-y-3">

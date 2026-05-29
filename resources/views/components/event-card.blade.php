@@ -1,36 +1,37 @@
 @props(['event'])
 
-<div class="group premium-card-hover overflow-hidden">
-    <!-- Image -->
-    <div class="relative h-48 bg-gradient-to-br from-primary-500/10 to-accent-500/10 overflow-hidden">
+<div class="group glass-heavy rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500">
+    <!-- Image Container -->
+    <div class="relative h-52 overflow-hidden">
         @if($event->event_image)
             <img src="{{ Storage::url($event->event_image) }}" alt="{{ $event->title }}"
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         @else
-            <div class="w-full h-full flex items-center justify-center">
-                <svg class="w-16 h-16 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-full h-full bg-gradient-to-br from-primary-500/20 via-accent-500/10 to-emerald-500/20 flex items-center justify-center">
+                <svg class="w-20 h-20 text-gray-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
             </div>
         @endif
 
-        <!-- Date Badge -->
+        <!-- Date Badge - Glass -->
         <div class="absolute top-3 left-3">
-            <div class="bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm rounded-xl px-3 py-2 text-center shadow-lg">
-                <p class="text-lg font-bold text-primary-500 leading-none">{{ $event->event_date->format('d') }}</p>
-                <p class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">{{ $event->event_date->format('M') }}</p>
+            <div class="glass-dark rounded-xl px-3 py-2 text-center shadow-lg">
+                <p class="text-lg font-bold text-white leading-none">{{ $event->event_date->format('d') }}</p>
+                <p class="text-xs font-medium text-white/80 uppercase">{{ $event->event_date->format('M') }}</p>
             </div>
         </div>
 
         <!-- Category Badge -->
         <div class="absolute top-3 right-3">
-            <span class="badge-primary text-xs">{{ $event->category_name }}</span>
+            <span class="glass-dark text-xs text-white px-3 py-1.5 rounded-lg">{{ $event->category_name }}</span>
         </div>
 
         <!-- Tickets Availability -->
         @if($event->is_full)
-            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-                <span class="badge-danger text-sm">Full</span>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center">
+                <span class="bg-rose-500/90 text-white text-sm font-bold px-5 py-2 rounded-xl shadow-lg">Sold Out</span>
             </div>
         @endif
     </div>
@@ -64,20 +65,20 @@
             </div>
 
             <div class="flex items-center gap-1 text-sm">
-                <span class="text-xs text-gray-400">{{ $event->tickets_remaining }} / {{ $event->ticket_limit }}</span>
-                <span class="text-xs text-gray-400">tickets left</span>
+                <span class="text-xs font-semibold text-primary-500 dark:text-primary-400">{{ $event->tickets_remaining }}</span>
+                <span class="text-xs text-gray-400">/ {{ $event->ticket_limit }}</span>
             </div>
         </div>
 
         <!-- Progress Bar -->
         @if($event->ticket_limit > 0)
-            <div class="progress-bar mt-3">
+            <div class="progress-bar mt-3 rounded-full">
                 @php
                     $percentage = $event->ticket_limit > 0
                         ? min(100, ($event->ticket_limit - $event->tickets_remaining) / $event->ticket_limit * 100)
                         : 0;
                 @endphp
-                <div class="progress-bar-fill" style="width: {{ $percentage }}%"></div>
+                <div class="progress-bar-fill rounded-full" style="width: {{ $percentage }}%"></div>
             </div>
         @endif
     </div>

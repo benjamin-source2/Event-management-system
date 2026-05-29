@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    <div class="premium-card p-8">
+    <div class="glass-card p-8">
         <form action="{{ route('verification.verify') }}" method="POST" class="space-y-6">
             @csrf
             <div class="input-group">
@@ -65,7 +65,7 @@
     </div>
 
     @if(session('last_result'))
-    <div class="mt-6 premium-card p-6">
+    <div class="mt-6 glass-card p-6">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Last Verification Result</h3>
         <div class="space-y-2 text-sm">
             <p><span class="font-medium text-gray-500 dark:text-gray-400">Status:</span>

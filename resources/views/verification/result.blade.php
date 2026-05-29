@@ -6,7 +6,7 @@
         <h1 class="text-3xl font-display font-bold text-gray-900 dark:text-white">Verification Result</h1>
     </div>
 
-    <div class="premium-card p-8">
+    <div class="glass-card p-8">
         @if($invitation->approval_status === 'approved')
         <div class="text-center mb-8">
             <div class="w-20 h-20 mx-auto bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mb-4">

@@ -15,7 +15,7 @@
         </a>
     </div>
 
-    <div class="premium-card overflow-hidden">
+    <div class="glass-heavy overflow-hidden">
         <div class="table-container">
             <table class="table-premium">
                 <thead>
