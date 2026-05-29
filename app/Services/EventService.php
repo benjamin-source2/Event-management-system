@@ -89,6 +89,30 @@ class EventService
     }
 
     /**
+     * Delete an event and clean up related resources.
+     */
+    public function delete(Event $event): void
+    {
+        DB::transaction(function () use ($event) {
+            // Delete event image
+            if ($event->event_image) {
+                Storage::disk('public')->delete($event->event_image);
+            }
+
+            // Delete related invitations
+            $event->invitations()->delete();
+
+            // Delete related favorites
+            $event->favoriteEvents()->delete();
+
+            // Delete related notifications about this event
+            AppNotification::where('action_url', 'like', "%{$event->slug}%")->delete();
+
+            $event->delete();
+        });
+    }
+
+    /**
      * Cancel an event.
      */
     public function cancel(Event $event): void

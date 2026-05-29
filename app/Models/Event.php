@@ -113,7 +113,7 @@ class Event extends Model
 
     public function scopeUpcoming($query)
     {
-        return $query->where('event_date', '>=', now())->where('status', 'approved');
+        return $query->where('event_date', '>=', now()->startOfDay())->where('status', 'approved');
     }
 
     public function scopeFeatured($query)

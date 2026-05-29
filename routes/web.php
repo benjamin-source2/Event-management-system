@@ -65,7 +65,12 @@ Route::middleware(['auth', 'verified', 'check.status'])->group(function () {
 
         // Events
         Route::get('/events', [AdminController::class, 'events'])->name('events');
+        Route::get('/events/create', [AdminController::class, 'eventCreate'])->name('events.create');
+        Route::post('/events', [AdminController::class, 'eventStore'])->name('events.store');
         Route::get('/events/{event}', [AdminController::class, 'eventShow'])->name('events.show');
+        Route::get('/events/{event}/edit', [AdminController::class, 'eventEdit'])->name('events.edit');
+        Route::put('/events/{event}', [AdminController::class, 'eventUpdate'])->name('events.update');
+        Route::delete('/events/{event}', [AdminController::class, 'eventDestroy'])->name('events.destroy');
         Route::post('/events/{event}/approve', [AdminController::class, 'eventApprove'])->name('events.approve');
         Route::post('/events/{event}/reject', [AdminController::class, 'eventReject'])->name('events.reject');
         Route::post('/events/{event}/cancel', [AdminController::class, 'eventCancel'])->name('events.cancel');

@@ -166,6 +166,77 @@ class AdminController extends Controller
         return back()->with('success', 'Event cancelled.');
     }
 
+    public function eventCreate()
+    {
+        return view('admin.events.create');
+    }
+
+    public function eventStore(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|string|in:' . implode(',', array_keys(Event::CATEGORIES)),
+            'location' => 'required|string|max:255',
+            'province' => 'required|string|in:' . implode(',', array_keys(Event::PROVINCES)),
+            'district' => 'required|string|max:255',
+            'event_date' => 'required|date',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'ticket_limit' => 'nullable|integer|min:0',
+            'status' => 'required|in:' . implode(',', array_keys(Event::STATUSES)),
+            'featured' => 'boolean',
+            'event_image' => 'nullable|image|max:2048',
+        ]);
+
+        $validated['featured'] = $request->has('featured');
+
+        // Auto-approve events created by super admin so they're immediately visible to all users
+        $validated['status'] = 'approved';
+
+        $event = $this->eventService->create($validated, auth()->id());
+
+        return redirect()->route('admin.events.show', $event)->with('success', 'Event created successfully.');
+    }
+
+    public function eventEdit(Event $event)
+    {
+        $event->load('organizer');
+        return view('admin.events.edit', compact('event'));
+    }
+
+    public function eventUpdate(Request $request, Event $event)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|string|in:' . implode(',', array_keys(Event::CATEGORIES)),
+            'location' => 'required|string|max:255',
+            'province' => 'required|string|in:' . implode(',', array_keys(Event::PROVINCES)),
+            'district' => 'required|string|max:255',
+            'event_date' => 'required|date',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'ticket_limit' => 'nullable|integer|min:0',
+            'status' => 'required|in:' . implode(',', array_keys(Event::STATUSES)),
+            'featured' => 'boolean',
+            'event_image' => 'nullable|image|max:2048',
+        ]);
+
+        // Include featured checkbox (default false if unchecked)
+        $validated['featured'] = $request->has('featured');
+
+        $this->eventService->update($event, $validated);
+
+        return redirect()->route('admin.events.show', $event->fresh())->with('success', 'Event updated successfully.');
+    }
+
+    public function eventDestroy(Event $event)
+    {
+        $this->eventService->delete($event);
+        return redirect()->route('admin.events')->with('success', 'Event deleted successfully.');
+    }
+
     public function eventToggleFeatured(Event $event)
     {
         $event->update(['featured' => !$event->featured]);
