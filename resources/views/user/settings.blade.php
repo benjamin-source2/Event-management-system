@@ -8,12 +8,35 @@
     </div>
 
     <!-- Profile Settings -->
-    <form action="{{ route('user.settings.update') }}" method="POST" class="space-y-8">
+    <form action="{{ route('user.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
         @method('PUT')
 
         <div class="glass-card p-6">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Profile Information</h2>
+
+            <!-- Profile Photo -->
+            <div class="flex items-center gap-6 mb-6 pb-6 border-b border-gray-200 dark:border-navy-700">
+                <div class="relative shrink-0">
+                    @if($user->profile_photo)
+                        <img src="{{ Storage::url($user->profile_photo) }}" alt="{{ $user->full_name }}"
+                             class="w-20 h-20 rounded-full object-cover border-2 border-primary-500/30 shadow-md">
+                    @else
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-2xl shadow-md">
+                            {{ $user->initials }}
+                        </div>
+                    @endif
+                </div>
+                <div class="flex-1">
+                    <label class="input-label">Profile Photo</label>
+                    <div class="mt-1">
+                        <input type="file" name="profile_photo" accept="image/*"
+                               class="input-field @error('profile_photo') input-error @enderror">
+                        <p class="text-xs text-gray-400 mt-1">JPG, PNG or GIF. Max 10MB.</p>
+                    </div>
+                    @error('profile_photo') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                </div>
+            </div>
 
             <div class="grid sm:grid-cols-2 gap-6">
                 <div class="input-group">

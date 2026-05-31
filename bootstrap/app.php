@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \App\Http\Middleware\RoleMiddleware::class,
             'check.status' => \App\Http\Middleware\CheckUserStatus::class,
             'track.activity' => \App\Http\Middleware\TrackUserActivity::class,
+            'no-cache' => \App\Http\Middleware\PreventBackHistory::class,
         ]);
 
         $middleware->web(append: [

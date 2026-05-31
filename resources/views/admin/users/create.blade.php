@@ -7,7 +7,7 @@
         <p class="text-gray-500 dark:text-gray-400">Add a new user to the platform</p>
     </div>
 
-    <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-6">
+    <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
 
         <div class="glass-heavy p-6 space-y-6">
@@ -47,6 +47,16 @@
                         <option value="event_manager">Event Manager</option>
                         <option value="super_admin">Super Admin</option>
                     </select>
+                </div>
+            </div>
+
+            <!-- Profile Photo -->
+            <div class="border-t border-gray-200 dark:border-navy-700 pt-6">
+                <div class="input-group">
+                    <label class="input-label">Profile Photo (optional)</label>
+                    <input type="file" name="profile_photo" accept="image/*" class="input-field">
+                    @error('profile_photo') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                    <p class="text-xs text-gray-400 mt-1">JPG, PNG or GIF. Max 10MB.</p>
                 </div>
             </div>
         </div>

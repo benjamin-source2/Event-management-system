@@ -15,10 +15,10 @@ Route::get('/events', [HomeController::class, 'events'])->name('events.index');
 Route::get('/events/{slug}', [HomeController::class, 'eventShow'])->name('events.show');
 
 // Search API
-Route::middleware(['auth', 'verified', 'check.status'])->get('/search/events', [HomeController::class, 'searchApi'])->name('search.events');
+Route::middleware(['auth', 'verified', 'check.status', 'no-cache'])->get('/search/events', [HomeController::class, 'searchApi'])->name('search.events');
 
 // Authenticated User Routes
-Route::middleware(['auth', 'verified', 'check.status'])->group(function () {
+Route::middleware(['auth', 'verified', 'check.status', 'no-cache'])->group(function () {
     // User Dashboard
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [UserDashboardController::class, 'index'])->name('dashboard');

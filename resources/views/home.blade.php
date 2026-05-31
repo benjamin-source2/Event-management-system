@@ -323,4 +323,29 @@
             </div>
         </div>
     @endif
+
+    <!-- Latest Events -->
+    @if($latestEvents->count() > 0)
+        <section class="py-20 bg-white dark:bg-navy-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-end justify-between mb-12">
+                    <div>
+                        <h2 class="section-title">New Events</h2>
+                        <p class="section-subtitle">Recently added events you might be interested in</p>
+                    </div>
+                    <a href="{{ route('events.index') }}" class="btn-outline btn-sm hidden sm:flex">View All</a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($latestEvents as $event)
+                        <x-event-card :event="$event" />
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-8 sm:hidden">
+                    <a href="{{ route('events.index') }}" class="btn-outline">View All</a>
+                </div>
+            </div>
+        </section>
+    @endif
 @endsection

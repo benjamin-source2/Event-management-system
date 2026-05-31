@@ -21,6 +21,7 @@ class HomeController extends Controller
     {
         $featuredEvents = $this->eventService->getFeaturedEvents(6);
         $upcomingEvents = Event::approved()->upcoming()->orderBy('event_date')->take(8)->get();
+        $latestEvents = Event::approved()->latest()->take(8)->get();
         $categories = Event::approved()->select('category')->distinct()->get()->pluck('category');
         $totalEvents = Event::approved()->count();
         $totalOrganizers = Event::approved()->select('organizer_id')->distinct()->count();
@@ -28,6 +29,7 @@ class HomeController extends Controller
         return view('home', compact(
             'featuredEvents',
             'upcomingEvents',
+            'latestEvents',
             'categories',
             'totalEvents',
             'totalOrganizers'

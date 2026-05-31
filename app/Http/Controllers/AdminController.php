@@ -14,6 +14,7 @@ use App\Services\InvitationService;
 use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
@@ -79,7 +80,12 @@ class AdminController extends Controller
             'phone' => 'nullable|string|max:20',
             'password' => 'required|string|min:8',
             'role' => 'required|in:super_admin,event_manager,user',
+            'profile_photo' => 'nullable|image|max:10240',
         ]);
+
+        if ($request->hasFile('profile_photo')) {
+            $validated['profile_photo'] = $request->file('profile_photo')->store('profiles', 'public');
+        }
 
         $validated['password'] = Hash::make($validated['password']);
         User::create($validated);
@@ -103,7 +109,15 @@ class AdminController extends Controller
             'phone' => 'nullable|string|max:20',
             'role' => 'required|in:super_admin,event_manager,user',
             'status' => 'required|in:active,suspended,pending',
+            'profile_photo' => 'nullable|image|max:10240',
         ]);
+
+        if ($request->hasFile('profile_photo')) {
+            if ($user->profile_photo) {
+                Storage::disk('public')->delete($user->profile_photo);
+            }
+            $validated['profile_photo'] = $request->file('profile_photo')->store('profiles', 'public');
+        }
 
         $user->update($validated);
 
@@ -186,7 +200,7 @@ class AdminController extends Controller
             'ticket_limit' => 'nullable|integer|min:0',
             'status' => 'required|in:' . implode(',', array_keys(Event::STATUSES)),
             'featured' => 'boolean',
-            'event_image' => 'nullable|image|max:2048',
+            'event_image' => 'nullable|image|max:10240',
         ]);
 
         $validated['featured'] = $request->has('featured');
@@ -220,7 +234,7 @@ class AdminController extends Controller
             'ticket_limit' => 'nullable|integer|min:0',
             'status' => 'required|in:' . implode(',', array_keys(Event::STATUSES)),
             'featured' => 'boolean',
-            'event_image' => 'nullable|image|max:2048',
+            'event_image' => 'nullable|image|max:10240',
         ]);
 
         // Include featured checkbox (default false if unchecked)

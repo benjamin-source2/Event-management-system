@@ -7,7 +7,7 @@
         <p class="text-gray-500 dark:text-gray-400">Update user information</p>
     </div>
 
-    <form action="{{ route('admin.users.update', $user) }}" method="POST" class="space-y-6">
+    <form action="{{ route('admin.users.update', $user) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
         @method('PUT')
 
@@ -48,6 +48,22 @@
                         <option value="suspended" {{ $user->status === 'suspended' ? 'selected' : '' }}>Suspended</option>
                         <option value="pending" {{ $user->status === 'pending' ? 'selected' : '' }}>Pending</option>
                     </select>
+                </div>
+            </div>
+
+            <!-- Profile Photo -->
+            <div class="border-t border-gray-200 dark:border-navy-700 pt-6">
+                <div class="input-group">
+                    <label class="input-label">Profile Photo</label>
+                    @if($user->profile_photo)
+                        <div class="mb-3 flex items-center gap-4">
+                            <img src="{{ Storage::url($user->profile_photo) }}" alt="" class="w-16 h-16 rounded-full object-cover border-2 border-primary-500/30">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Current photo</p>
+                        </div>
+                    @endif
+                    <input type="file" name="profile_photo" accept="image/*" class="input-field">
+                    @error('profile_photo') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                    <p class="text-xs text-gray-400 mt-1">JPG, PNG or GIF. Max 10MB. Leave empty to keep current.</p>
                 </div>
             </div>
         </div>

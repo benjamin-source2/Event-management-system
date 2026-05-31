@@ -9,6 +9,7 @@ use App\Models\FavoriteEvent;
 use App\Services\InvitationService;
 use App\Services\NotificationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserDashboardController extends Controller
 {
@@ -144,7 +145,15 @@ class UserDashboardController extends Controller
             'phone' => 'nullable|string|max:20',
             'language' => 'required|in:en,fr,rw',
             'theme_preference' => 'required|in:light,dark',
+            'profile_photo' => 'nullable|image|max:10240',
         ]);
+
+        if ($request->hasFile('profile_photo')) {
+            if ($user->profile_photo) {
+                Storage::disk('public')->delete($user->profile_photo);
+            }
+            $validated['profile_photo'] = $request->file('profile_photo')->store('profiles', 'public');
+        }
 
         $user->update($validated);
 
